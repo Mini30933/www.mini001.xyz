@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Mini30933 · 项目展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 1rem 0.8rem;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            padding: 1.5rem 1.2rem 2rem;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+            background: #1e293b;
+            color: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #0f172a;
+        }
+
+        .status-badge {
+            font-size: 0.68rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            letter-spacing: 0.2px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #0f172a;
+            margin-bottom: 0.15rem;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-start;
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 1rem 1.1rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #e2e8f0;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bio-info h2 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .bio-info p {
+            font-size: 0.8rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.55rem;
+        }
+
+        .tag {
+            background: #e2e8f0;
+            color: #334155;
+            padding: 0.12rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            margin: 1.5rem 0 0.9rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 0.9rem;
+            margin: 0.8rem 0 1.4rem;
+        }
+
+        .project-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 0.9rem 0.9rem 0.8rem;
+            border: 1px solid #e2e8f0;
+            transition: 0.15s;
+        }
+
+        .project-card:active {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        @media (hover: hover) {
+            .project-card:hover {
+                border-color: #cbd5e1;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            }
+        }
+
+        .project-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .project-card p {
+            font-size: 0.76rem;
+            color: #475569;
+            line-height: 1.4;
+        }
+
+        .project-card .link {
+            display: inline-block;
+            margin-top: 0.55rem;
+            font-size: 0.76rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            min-width: 44px;
+            min-height: 44px;
+            line-height: 44px;
+        }
+
+        .project-card .link:active {
+            color: #1d4ed8;
+        }
+
+        .footer {
+            margin-top: 1.8rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.68rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        @media (min-width: 600px) {
+            body {
+                padding: 2rem 1.2rem;
+            }
+
+            .container {
+                padding: 2rem 1.8rem 2.4rem;
+                border-radius: 24px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .avatar {
+                width: 64px;
+                height: 64px;
+            }
+
+            .project-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .project-card {
+                padding: 1rem 1rem 0.9rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            .bio-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .tags {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-area">
+                <div class="logo-icon">M</div>
+                <span class="logo-text">Mini30933</span>
+            </div>
+            <span class="status-badge">✦ 持续更新中</span>
+        </div>
+
+        <h1>Hi，我是 Mini30933</h1>
+        <p class="subtitle">一个在 iPad 上写代码、养龙虾、搭服务器的开发者。</p>
+
+        <div class="bio-section">
+            <div class="avatar">
+                <img src="PHH.jpeg" alt="头像">
+            </div>
+            <div class="bio-info">
+                <h2>关于我</h2>
+                <p>
+                    热爱 Python、前端开发，喜欢把想法变成实际可用的工具。平时在 iPad 上写代码，用 QClaw 养龙虾，在Linux和Windows的服务器上搭建各种小项目，俗话说：慢工出烂活，则速者一坨。
+                </p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">HTML/CSS</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">服务器运维</span>
+                    <span class="tag">API 开发</span>
+                    <span class="tag">Minecraft</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">本人项目</div>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Ai翻译</h3>
+                <p>解决部分网页AI翻译要钱的问题。。。</p>
+                <span class="link" id="link1">HI →</span>
+            </div>
+
+            <div class="project-card">
+                <h3>图片转像素</h3>
+                <p>图片转64×64 128×128</p>
+                <span class="link" id="link2">HI →</span>
+            </div>
+
+            <div class="project-card">
+                <h3>html图片</h3>
+                <p>图片转html代码</p>
+                <span class="link" id="link3">HI →</span>
+            </div>
+
+            <div class="project-card">
+                <h3>抖音快手解析</h3>
+                <p>无水印视频图片下载</p>
+                <span class="link" id="link4">HI →</span>
+            </div>
+
+            <div class="project-card">
+                <h3>音频格式转换</h3>
+                <p>超多格式互相转化(纯本地)</p>
+                <span class="link" id="link5">HI →</span>
+            </div>
+
+            <div class="project-card">
+                <h3>尽情期待</h3>
+                <p>不知道写啥,应该有写</p>
+                <span class="link" id="link6">HI →</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            Mini30933 · 用 iPad 搭建的开发者小站 · 感谢来访
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('link1').addEventListener('click', function() {
+            window.location.href = 'http://fany.fucku.top/';
+        });
+
+        document.getElementById('link2').addEventListener('click', function() {
+            window.location.href = 'https://ico-e5l.pages.dev/';
+        });
+
+        document.getElementById('link3').addEventListener('click', function() {
+            window.location.href = 'https://hi-d3w.pages.dev/';
+        });
+
+        document.getElementById('link4').addEventListener('click', function() {
+            window.location.href = 'http://video.fucku.top/';
+        });
+
+        document.getElementById('link5').addEventListener('click', function() {
+            window.location.href = 'https://mp4-dag.pages.dev/';
+        });
+
+        document.getElementById('link6').addEventListener('click', function() {
+            window.location.href = 'https://www.mini001.xyz/';
+        });
+    </script>
+    <!--
+        ____________________
+       /                    \
+      |   ________________   |
+      |  /                \  |
+      | |   .----------.   | |
+      | |  |  佛祖保佑   |  | |
+      | |   '----------'   | |
+      |  \________________/  |
+      |                      |
+      |    ⠀⠀⠀⠀⣤⣤⣤⣤⣤⣤⣤⣤    |
+      |    ⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿    |
+      |    ⠀⠐⠛⠿⣿⣿⣿⣿⣿⣿⣿⡿    |
+      |    ⠀⠀⠈⠁⠹⠿⣿⣿⣿⣿⠋⠁    |
+      |    ⠀⠄⠄⠄⢀⣠⣿⣿⣿⣇⠄⠄    |
+      |    ⠀⠄⠄⢠⣿⣿⣿⣿⣿⣿⡆⠄    |
+      |    ⠀⠄⣰⣿⣿⣿⣿⣿⣿⣿⣿⡄    |
+      |    ⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿    |
+      |    ⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿    |
+      |    ⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟    |
+      |    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏    |
+      |    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁    |
+      |    ⠘⢿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀    |
+      |                      |
+      |      阿弥陀佛          |
+      |      出入平安          |
+      |      代码无Bug        |
+      |      服务器永不宕机    |
+      |                      |
+      \______________________/
+    -->
+</body>
+</html>
